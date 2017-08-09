@@ -1,5 +1,5 @@
 import React from 'react'
-import { Item, Input, Header, Content, Container, List, ListItem, Text } from 'native-base'
+import { Item, Input, Content, List, ListItem, Text } from 'native-base'
 
 export default class UserList extends React.Component {
   constructor(props) {
@@ -31,11 +31,11 @@ export default class UserList extends React.Component {
         <List>
           {
             this.getMatches().map((each, i) => {
-              return <ListItem key={i}><Text>{each.first_name + ' ' + each.last_name}</Text></ListItem>
+              return <ListItem onPress={() => this.props.navigate('Chat')} data-id={each.id} key={i}><Text>{each.first_name + ' ' + each.last_name}</Text></ListItem>
             })
           }
         </List>
       </Content>
-    );
+    )
   }
 }

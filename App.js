@@ -1,13 +1,18 @@
-import React from 'react';
-import { StyleProvider, Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base';
+import React from 'react'
+import { StyleProvider, View, Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base'
 import UserList from './userList.js'
 import getTheme from './native-base-theme/components'
 import commonColors from './native-base-theme/variables/commonColor'
+import { StackNavigator } from 'react-navigation'
 
-export default class App extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state ={ users: [] }
+    this.state = { users: [] }
+  }
+
+  static navigationOptions = {
+    title: 'Impressions',
   }
 
   async componentDidMount() {
@@ -17,22 +22,12 @@ export default class App extends React.Component {
   }
 
   render() {
+    const { navigate } = this.props.navigation
     return (
       <StyleProvider style={getTheme(commonColors)}>
         <Container>
-          <Header>
-            <Left>
-              <Button transparent>
-                <Icon name='menu' />
-              </Button>
-            </Left>
-            <Body>
-              <Title>Impressions</Title>
-            </Body>
-            <Right />
-          </Header>
           <Content>
-            <UserList users={ this.state.users }/>
+            <UserList navigate= { navigate } users={ this.state.users }/>
           </Content>
           <Footer>
             <FooterTab>
@@ -46,3 +41,20 @@ export default class App extends React.Component {
     )
   }
 }
+
+class HomeScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Welcome',
+  }
+
+  render() {
+    return <Text>Hello, Navigation!</Text>
+  }
+}
+
+const SimpleApp = StackNavigator({
+  Home: { screen: App },
+  Chat: { screen: HomeScreen }
+})
+
+export default SimpleApp
