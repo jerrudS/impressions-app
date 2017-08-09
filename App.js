@@ -29,7 +29,7 @@ export default class App extends React.Component {
           <Right />
         </Header>
         <Content>
-          <Search />
+          {/* <Search /> */}
           <UserList users={ this.state.users }/>
         </Content>
         <Footer>
