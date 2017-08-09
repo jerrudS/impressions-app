@@ -1,20 +1,13 @@
-import Expo from 'expo'
 import React from 'react';
 import { StyleProvider, Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base';
 import UserList from './userList.js'
 import getTheme from './native-base-theme/components'
-import material from './native-base-theme/variables/material'
-import platform from './native-base-theme/variables/platform'
 import commonColors from './native-base-theme/variables/commonColor'
 
 export default class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state =
-    {
-      users: [],
-      isReady: false
-    }
+    this.state ={ users: [] }
   }
 
   async componentDidMount() {
@@ -50,6 +43,6 @@ export default class App extends React.Component {
           </Footer>
         </Container>
       </StyleProvider>
-    );
+    )
   }
 }

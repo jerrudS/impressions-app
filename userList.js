@@ -9,15 +9,15 @@ export default class UserList extends React.Component {
   }
 
   handleChange(event) {
-    console.log(event.nativeEvent.text)
-    const value = event.nativeEvent.text
-    this.setState({ match: value })
+    const { text } = event.nativeEvent
+    this.setState({ match: text })
   }
 
   getMatches() {
     const { match } = this.state
     return this.props.users.filter(each => {
-      return each.first_name.toLowerCase().includes(match.toLowerCase())
+      const name = each.first_name + ' ' + each.last_name
+      return name.toLowerCase().includes(match.toLowerCase()) + each.last_name.toLowerCase().includes(match.toLowerCase())
     })
   }
 
@@ -31,7 +31,7 @@ export default class UserList extends React.Component {
         <List>
           {
             this.getMatches().map((each, i) => {
-              return <ListItem key={i}><Text>{each.first_name}</Text></ListItem>
+              return <ListItem key={i}><Text>{each.first_name + ' ' + each.last_name}</Text></ListItem>
             })
           }
         </List>
