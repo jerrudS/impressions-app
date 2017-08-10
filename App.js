@@ -4,6 +4,7 @@ import UserList from './userList.js'
 import getTheme from './native-base-theme/components'
 import commonColors from './native-base-theme/variables/commonColor'
 import { StackNavigator } from 'react-navigation'
+import ReviewPage from './reviewPage.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -42,19 +43,9 @@ class App extends React.Component {
   }
 }
 
-class HomeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Welcome',
-  }
-
-  render() {
-    return <Text>Hello, Navigation!</Text>
-  }
-}
-
-const SimpleApp = StackNavigator({
+const ImpressionsApp = StackNavigator({
   Home: { screen: App },
-  Chat: { screen: HomeScreen }
+  Review: { screen: ReviewPage }
 })
 
-export default SimpleApp
+export default ImpressionsApp
