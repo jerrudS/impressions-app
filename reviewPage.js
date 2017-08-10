@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon, Card, CardItem, Item, Input, Content, List, ListItem, Text } from 'native-base'
+import { Button, Form, Icon, Card, CardItem, Item, Input, Content, List, ListItem, Text } from 'native-base'
 
 export default class ReviewPage extends React.Component {
   constructor(props) {
@@ -37,16 +37,26 @@ export default class ReviewPage extends React.Component {
             <CardItem>
               <Text>Review:</Text>
             </CardItem>
-            <CardItem>
-              <Item regular>
-                <Input placeholder='Add a review here'></Input>
-              </Item>
-            </CardItem>
+            <Form>
+              <CardItem>
+                <Item regular>
+                  <Input placeholder='Add a review here'></Input>
+                </Item>
+              </CardItem>
+              <CardItem style={{justifyContent: 'center'}}>
+                <Button primary>
+                  <Text>Submit</Text>
+                </Button>
+              </CardItem>
+            </Form>
           </Card>
           <Card>
             <CardItem>
-              <Text>Reviews</Text>
+              <Text>{ userData.first_name }'s Reviews:</Text>
             </CardItem>
+            <List>
+              <ListItem><Text>{ userData.review }</Text></ListItem>
+            </List>
           </Card>
         </Card>
       </Content>

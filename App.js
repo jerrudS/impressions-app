@@ -17,7 +17,7 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    const res = await fetch('http://localhost:3006/users')
+    const res = await fetch('http://localhost:3007/users')
     const json = await res.json()
     this.setState({ users: json })
   }
