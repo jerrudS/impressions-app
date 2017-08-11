@@ -14,8 +14,12 @@ export default class ReviewPage extends React.Component {
 
   async handleSubmit(event) {
     event.preventDefault()
-    const inputData = { review: this.state.text }
-    console.log(inputData)
+    const userData = this.props.navigation.state.params.user
+    const inputData =
+    {
+      review: this.state.text,
+      user_id: userData.id
+    }
     const res = await fetch('http://localhost:3007/reviews', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
