@@ -4,10 +4,24 @@ import { Button, Form, Icon, Card, CardItem, Item, Input, Content, List, ListIte
 export default class ReviewPage extends React.Component {
   constructor(props) {
     super(props)
+    this.state = { text: '' }
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   static navigationOptions = {
     title: 'Impressions',
+  }
+
+  async handleSubmit(event) {
+    event.preventDefault()
+    const inputData = { review: this.state.text }
+    console.log(inputData)
+    const res = await fetch('http://localhost:3007/reviews', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(inputData)
+    })
+    return this.setState({ text: res })
   }
 
   render() {
@@ -40,11 +54,11 @@ export default class ReviewPage extends React.Component {
             <Form>
               <CardItem>
                 <Item regular>
-                  <Input placeholder='Add a review here'></Input>
+                  <Input onChangeText={(text) => this.setState({text})} placeholder='Add a review here'></Input>
                 </Item>
               </CardItem>
               <CardItem style={{justifyContent: 'center'}}>
-                <Button primary>
+                <Button onPress={ this.handleSubmit } type="submit" primary>
                   <Text>Submit</Text>
                 </Button>
               </CardItem>
