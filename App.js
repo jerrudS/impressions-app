@@ -9,8 +9,11 @@ import ReviewPage from './reviewPage.js'
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { users: [] }
-    // this.saveReview = this.saveReview.bind(this)
+    this.state =
+    {
+      users: [],
+      reviews: []
+    }
   }
 
   static navigationOptions = {

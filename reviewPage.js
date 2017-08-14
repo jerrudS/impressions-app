@@ -4,7 +4,11 @@ import { Button, Form, Icon, Card, CardItem, Item, Input, Content, List, ListIte
 export default class ReviewPage extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { text: '' }
+    this.state =
+    {
+      text: '',
+      reviews: []
+    }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -28,8 +32,16 @@ export default class ReviewPage extends React.Component {
     return this.setState({ text: res })
   }
 
+  async componentDidMount() {
+    const userData = this.props.navigation.state.params.user
+    const res = await fetch('http://localhost:3007/reviews' + '?' + 'id=' + userData.id)
+    const json = await res.json()
+    this.setState({ reviews: json })
+  }
+
   render() {
     const userData = this.props.navigation.state.params.user
+    const reviews = this.state.reviews
     return (
       <Content>
         <Card>
@@ -73,7 +85,11 @@ export default class ReviewPage extends React.Component {
               <Text>{ userData.first_name }'s Reviews:</Text>
             </CardItem>
             <List>
-              <ListItem><Text>{ userData.review }</Text></ListItem>
+              {
+                reviews.map((each, i) => {
+                  return <ListItem key={i}><Text>{each.review}</Text></ListItem>
+                })
+              }
             </List>
           </Card>
         </Card>
