@@ -16,6 +16,7 @@ export default class ReviewPage extends React.Component {
 
   static navigationOptions = {
     title: 'Impressions',
+    headerStyle: { backgroundColor: 'tomato' }
   }
 
   async handleSubmit(event) {

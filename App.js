@@ -17,6 +17,7 @@ class App extends React.Component {
 
   static navigationOptions = {
     title: 'Impressions',
+    headerStyle: { backgroundColor: 'tomato' }
   }
 
   async componentDidMount() {
@@ -33,13 +34,6 @@ class App extends React.Component {
           <Content>
             <UserList navigate= { navigate } users={ this.state.users }/>
           </Content>
-          <Footer>
-            <FooterTab>
-              <Button full>
-                <Text>Footer</Text>
-              </Button>
-            </FooterTab>
-          </Footer>
         </Container>
       </StyleProvider>
     )
