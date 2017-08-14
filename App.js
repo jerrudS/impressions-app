@@ -11,8 +11,7 @@ class App extends React.Component {
     super(props)
     this.state =
     {
-      users: [],
-      reviews: []
+      users: []
     }
   }
 

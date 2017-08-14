@@ -32,42 +32,38 @@ export default class ReviewPage extends React.Component {
     return this.setState({ text: res })
   }
 
-  async componentDidMount() {
-    const userData = this.props.navigation.state.params.user
-    const res = await fetch('http://localhost:3007/reviews' + '?' + 'id=' + userData.id)
-    const json = await res.json()
-    this.setState({ reviews: json })
-  }
-
   render() {
     const userData = this.props.navigation.state.params.user
-    const reviews = this.state.reviews
+    const reviewData = this.props.navigation.state.params.reviews
+    const rating = this.props.navigation.state.params.reviews[0]
+    console.log(userData)
+    console.log(rating[0])
     return (
       <Content>
         <Card>
-          <CardItem style={{justifyContent: 'center'}}>
-            <Text style={{fontSize: 32}}>{ userData.first_name + ' ' + userData.last_name }</Text>
-          </CardItem>
-          <CardItem style={{justifyContent: 'center'}}>
-            <Text>Rating:</Text>
-          </CardItem>
-          <CardItem style={{justifyContent: 'center'}}>
-            <Text style={{fontSize: 12}}>{ userData.rating }</Text>
-          </CardItem>
           <Card>
-            <CardItem style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-              <Icon name='star' style={{fontSize: 40, color: 'orange'}}/>
-              <Icon name='star' style={{fontSize: 40, color: 'orange'}}/>
-              <Icon name='star' style={{fontSize: 40, color: 'orange'}}/>
-              <Icon name='star' style={{fontSize: 40, color: 'orange'}}/>
-              <Icon name='star' style={{fontSize: 40, color: 'orange'}}/>
+            <CardItem style={{justifyContent: 'center'}}>
+              <Text style={{fontSize: 32}}>{ userData.first_name + ' ' + userData.last_name }</Text>
+            </CardItem>
+            <CardItem style={{justifyContent: 'center'}}>
+              <Text>Rating:</Text>
+            </CardItem>
+            <CardItem style={{justifyContent: 'center'}}>
+              <Text style={{fontSize: 18}}>{ Number(rating[0].avg).toFixed(2) }</Text>
             </CardItem>
           </Card>
           <Card>
-            <CardItem>
-              <Text>Review:</Text>
-            </CardItem>
             <Form>
+              <CardItem style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+                <Icon name='star' style={{fontSize: 40, color: 'orange'}}/>
+                <Icon name='star' style={{fontSize: 40, color: 'orange'}}/>
+                <Icon name='star' style={{fontSize: 40, color: 'orange'}}/>
+                <Icon name='star' style={{fontSize: 40, color: 'orange'}}/>
+                <Icon name='star' style={{fontSize: 40, color: 'orange'}}/>
+              </CardItem>
+              <CardItem>
+                <Text>Review:</Text>
+              </CardItem>
               <CardItem>
                 <Item regular>
                   <Input onChangeText={(text) => this.setState({text})} placeholder='Add a review here'></Input>
@@ -86,7 +82,7 @@ export default class ReviewPage extends React.Component {
             </CardItem>
             <List>
               {
-                reviews.map((each, i) => {
+                reviewData[1].map((each, i) => {
                   return <ListItem key={i}><Text>{each.review}</Text></ListItem>
                 })
               }

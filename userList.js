@@ -26,9 +26,11 @@ export default class UserList extends React.Component {
     })
   }
 
-  handlePress(each) {
+  async handlePress(each) {
     const user = each
-    return this.props.navigate('Review', { user })
+    const res = await fetch('http://localhost:3007/reviews' + '?' + 'id=' + user.id)
+    const reviews = await res.json()
+    return this.props.navigate('Review', { user, reviews })
   }
 
   render() {
