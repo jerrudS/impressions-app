@@ -5,6 +5,7 @@ import getTheme from './native-base-theme/components'
 import commonColors from './native-base-theme/variables/commonColor'
 import { StackNavigator } from 'react-navigation'
 import ReviewPage from './reviewPage.js'
+import Submitted from './submitted.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -42,7 +43,8 @@ class App extends React.Component {
 
 const ImpressionsApp = StackNavigator({
   Home: { screen: App },
-  Review: { screen: ReviewPage }
+  Review: { screen: ReviewPage },
+  Submitted: { screen: Submitted }
 })
 
 export default ImpressionsApp
