@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Form, Icon, Card, CardItem, Item, Input, Content, List, ListItem, Text } from 'native-base'
+import Stars from 'react-native-stars-rating'
 
 export default class ReviewPage extends React.Component {
   constructor(props) {
@@ -7,6 +8,7 @@ export default class ReviewPage extends React.Component {
     this.state =
     {
       text: '',
+      rating: [],
       reviews: []
     }
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -22,6 +24,7 @@ export default class ReviewPage extends React.Component {
     const inputData =
     {
       review: this.state.text,
+      rating: this.state.rating,
       user_id: userData.id
     }
     const res = await fetch('http://localhost:3007/reviews', {
@@ -36,8 +39,6 @@ export default class ReviewPage extends React.Component {
     const userData = this.props.navigation.state.params.user
     const reviewData = this.props.navigation.state.params.reviews
     const rating = this.props.navigation.state.params.reviews[0]
-    console.log(userData)
-    console.log(rating[0])
     return (
       <Content>
         <Card>
@@ -55,11 +56,14 @@ export default class ReviewPage extends React.Component {
           <Card>
             <Form>
               <CardItem style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-                <Icon name='star' style={{fontSize: 40, color: 'orange'}}/>
-                <Icon name='star' style={{fontSize: 40, color: 'orange'}}/>
-                <Icon name='star' style={{fontSize: 40, color: 'orange'}}/>
-                <Icon name='star' style={{fontSize: 40, color: 'orange'}}/>
-                <Icon name='star' style={{fontSize: 40, color: 'orange'}}/>
+                <Stars
+                  isActive={true}
+                  rateMax={5}
+                  isHalfStarEnabled={false}
+                  onStarPress={(rating) => this.setState({rating})}
+                  rate={0}
+                  size={60}
+                  />
               </CardItem>
               <CardItem>
                 <Text>Review:</Text>
