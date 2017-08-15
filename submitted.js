@@ -8,7 +8,6 @@ export default class Submitted extends React.Component {
   }
 
   render() {
-    console.log(this.props.navigation.state.params)
     return (
       <Content>
         <Card>

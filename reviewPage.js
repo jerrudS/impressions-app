@@ -26,7 +26,7 @@ export default class ReviewPage extends React.Component {
     {
       review: this.state.text,
       rating: this.state.rating,
-      user_id: userData.id
+      userId: userData.id
     }
     const res = await fetch('https://impressions-app.herokuapp.com/reviews', {
       method: 'POST',
@@ -48,7 +48,7 @@ export default class ReviewPage extends React.Component {
         <Card>
           <Card>
             <CardItem style={{justifyContent: 'center'}}>
-              <Text style={{fontSize: 32}}>{ userData.first_name + ' ' + userData.last_name }</Text>
+              <Text style={{fontSize: 32}}>{ userData.firstname + ' ' + userData.lastname }</Text>
             </CardItem>
             <CardItem style={{justifyContent: 'center'}}>
               <Text>Rating:</Text>
@@ -86,7 +86,7 @@ export default class ReviewPage extends React.Component {
           </Card>
           <Card>
             <CardItem>
-              <Text>{ userData.first_name }'s Reviews:</Text>
+              <Text>{ userData.firstname }'s Reviews:</Text>
             </CardItem>
             <List>
               {

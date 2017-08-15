@@ -6,9 +6,9 @@ export default class Signup extends React.Component {
     super(props)
     this.state =
     {
-      first_name: [],
-      last_name: [],
-      user_name: [],
+      firstname: [],
+      lastname: [],
+      username: [],
       password: [],
       email: []
     }
@@ -23,9 +23,9 @@ export default class Signup extends React.Component {
   async handleSubmit(event) {
     event.preventDefault()
     const userData = {
-      first_name: this.state.first_name,
-      last_name: this.state.last_name,
-      user_name: this.state.user_name,
+      firstname: this.state.firstname,
+      lastname: this.state.lastname,
+      username: this.state.username,
       password: this.state.password,
       email: this.state.email
     }
@@ -49,7 +49,7 @@ export default class Signup extends React.Component {
           </CardItem>
           <CardItem>
             <Item regular>
-              <Input onChangeText={first_name => this.setState({first_name})}></Input>
+              <Input onChangeText={firstname => this.setState({firstname})}></Input>
             </Item>
           </CardItem>
           <CardItem>
@@ -57,7 +57,7 @@ export default class Signup extends React.Component {
           </CardItem>
           <CardItem>
             <Item regular>
-              <Input onChangeText={last_name => this.setState({last_name})}></Input>
+              <Input onChangeText={lastname => this.setState({lastname})}></Input>
             </Item>
           </CardItem>
           <CardItem>
@@ -65,7 +65,7 @@ export default class Signup extends React.Component {
           </CardItem>
           <CardItem>
             <Item regular>
-              <Input onChangeText={user_name => this.setState({user_name})}></Input>
+              <Input onChangeText={username => this.setState({username})}></Input>
             </Item>
           </CardItem>
           <CardItem>
@@ -73,15 +73,7 @@ export default class Signup extends React.Component {
           </CardItem>
           <CardItem>
             <Item regular>
-              <Input></Input>
-            </Item>
-          </CardItem>
-          <CardItem>
-            <Text>Confirm Password:</Text>
-          </CardItem>
-          <CardItem>
-            <Item regular>
-              <Input onChangeText={password => this.setState({password})}></Input>
+              <Input secureTextEntry={true} onChangeText={password => this.setState({password})}></Input>
             </Item>
           </CardItem>
           <CardItem>
