@@ -34,7 +34,6 @@ export default class ReviewPage extends React.Component {
       body: JSON.stringify(inputData)
     })
     this.setState({ text: res })
-    console.log(this.props.navigation)
     const { navigate } = this.props.navigation
     const data = this.state
     return navigate('Submitted', { data })
@@ -44,7 +43,6 @@ export default class ReviewPage extends React.Component {
     const userData = this.props.navigation.state.params.user
     const reviewData = this.props.navigation.state.params.reviews
     const rating = this.props.navigation.state.params.reviews[0]
-    console.log(this.props.navigation)
     return (
       <Content>
         <Card>
