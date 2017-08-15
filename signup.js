@@ -10,7 +10,7 @@ export default class Signup extends React.Component {
       lastname: [],
       username: [],
       password: [],
-      email: []
+      email: [],
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
