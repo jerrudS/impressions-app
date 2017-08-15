@@ -28,7 +28,7 @@ export default class ReviewPage extends React.Component {
       rating: this.state.rating,
       user_id: userData.id
     }
-    const res = await fetch('http://localhost:3007/reviews', {
+    const res = await fetch('https://impressions-app.herokuapp.com/reviews', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(inputData)

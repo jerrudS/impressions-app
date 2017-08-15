@@ -17,6 +17,3 @@ export default class Submitted extends React.Component {
           </CardItem>
         </Card>
       </Content>
-    )
-  }
-}
