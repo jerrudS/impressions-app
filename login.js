@@ -1,16 +1,13 @@
 import React from 'react'
 import { Card, CardItem, Content, Text, Item, Input, Button } from 'native-base'
 
-export default class Signup extends React.Component {
+export default class Login extends React.Component {
   constructor(props) {
     super(props)
     this.state =
     {
-      firstname: [],
-      lastname: [],
       username: [],
-      password: [],
-      email: [],
+      password: []
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -23,21 +20,15 @@ export default class Signup extends React.Component {
   async handleSubmit(event) {
     event.preventDefault()
     const userData = {
-      firstname: this.state.firstname,
-      lastname: this.state.lastname,
       username: this.state.username,
-      password: this.state.password,
-      email: this.state.email
+      password: this.state.password
     }
-    const res = await fetch('http://localhost:3040/users', {
+    const res = await fetch('http://localhost:3040/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(userData)
     })
-    this.setState({ text: res })
-    const { navigate } = this.props.navigation
-    const data = this.state
-    return navigate('Login', { data })
+    return this.setState({ text: res })
   }
 
   render() {
@@ -45,26 +36,10 @@ export default class Signup extends React.Component {
       <Content>
         <Card>
           <CardItem style={{justifyContent: 'center'}}>
-            <Text>Sign Up</Text>
+            <Text>Login</Text>
           </CardItem>
           <CardItem>
-            <Text>First Name:</Text>
-          </CardItem>
-          <CardItem>
-            <Item regular>
-              <Input onChangeText={firstname => this.setState({firstname})}></Input>
-            </Item>
-          </CardItem>
-          <CardItem>
-            <Text>Last Name:</Text>
-          </CardItem>
-          <CardItem>
-            <Item regular>
-              <Input onChangeText={lastname => this.setState({lastname})}></Input>
-            </Item>
-          </CardItem>
-          <CardItem>
-            <Text>Create User Name:</Text>
+            <Text>User Name:</Text>
           </CardItem>
           <CardItem>
             <Item regular>
@@ -77,14 +52,6 @@ export default class Signup extends React.Component {
           <CardItem>
             <Item regular>
               <Input secureTextEntry={true} onChangeText={password => this.setState({password})}></Input>
-            </Item>
-          </CardItem>
-          <CardItem>
-            <Text>Email:</Text>
-          </CardItem>
-          <CardItem>
-            <Item regular>
-              <Input onChangeText={email => this.setState({email})}></Input>
             </Item>
           </CardItem>
           <CardItem style={{justifyContent: 'center'}}>

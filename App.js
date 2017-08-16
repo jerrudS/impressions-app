@@ -7,6 +7,7 @@ import { StackNavigator } from 'react-navigation'
 import ReviewPage from './reviewPage.js'
 import Submitted from './submitted.js'
 import Signup from './signup.js'
+import Login from './login.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -44,6 +45,7 @@ class App extends React.Component {
 
 const ImpressionsApp = StackNavigator({
   Home: { screen: Signup },
+  Login: { screen: Login },
   Select: { screen: App },
   Review: { screen: ReviewPage },
   Submitted: { screen: Submitted }
