@@ -5,6 +5,8 @@ import getTheme from './native-base-theme/components'
 import commonColors from './native-base-theme/variables/commonColor'
 import { StackNavigator } from 'react-navigation'
 import ReviewPage from './reviewPage.js'
+import Submitted from './submitted.js'
+import Signup from './signup.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -21,7 +23,7 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    const res = await fetch('http://localhost:3007/users')
+    const res = await fetch('https://impressions-app.herokuapp.com/users')
     const json = await res.json()
     this.setState({ users: json })
   }
@@ -41,8 +43,10 @@ class App extends React.Component {
 }
 
 const ImpressionsApp = StackNavigator({
-  Home: { screen: App },
-  Review: { screen: ReviewPage }
+  Home: { screen: Signup },
+  Select: { screen: App },
+  Review: { screen: ReviewPage },
+  Submitted: { screen: Submitted }
 })
 
 export default ImpressionsApp
