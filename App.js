@@ -52,7 +52,7 @@ class App extends React.Component {
 }
 
 const ImpressionsApp = StackNavigator({
-  Home: { screen: Login },
+  Home: { screen: Signup },
   Login: { screen: Login },
   Select: { screen: App },
   Review: { screen: ReviewPage },
