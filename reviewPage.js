@@ -22,6 +22,7 @@ export default class ReviewPage extends React.Component {
   async handleSubmit(event) {
     event.preventDefault()
     const userData = this.props.navigation.state.params.user
+    const token = this.props.navigation.state.params.token
     const inputData =
     {
       review: this.state.text,
@@ -30,13 +31,15 @@ export default class ReviewPage extends React.Component {
     }
     const res = await fetch('https://impressions-app.herokuapp.com/reviews', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer' + ' ' + token
+       },
       body: JSON.stringify(inputData)
     })
     this.setState({ text: res })
     const { navigate } = this.props.navigation
-    const data = this.state
-    return navigate('Submitted', { data })
+    return navigate('Submitted')
   }
 
   render() {

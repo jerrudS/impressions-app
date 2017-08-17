@@ -14,7 +14,8 @@ class App extends React.Component {
     super(props)
     this.state =
     {
-      users: []
+      users: [],
+      token: ''
     }
   }
 
@@ -24,9 +25,16 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    const res = await fetch('https://impressions-app.herokuapp.com/users')
-    const json = await res.json()
-    this.setState({ users: json })
+    const verify = this.props.navigation.state.params.data.verify
+    const token = verify.myToken
+    const res = await fetch('https://impressions-app.herokuapp.com/users', {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer' + ' ' + verify.myToken,
+      }
+    })
+    const data = await res.json()
+    return this.setState({ users: data, token: token })
   }
 
   render() {
@@ -35,7 +43,7 @@ class App extends React.Component {
       <StyleProvider style={getTheme(commonColors)}>
         <Container>
           <Content>
-            <UserList navigate= { navigate } users={ this.state.users }/>
+            <UserList navigate= { navigate } token= { this.state.token } users={ this.state.users }/>
           </Content>
         </Container>
       </StyleProvider>
@@ -44,7 +52,7 @@ class App extends React.Component {
 }
 
 const ImpressionsApp = StackNavigator({
-  Home: { screen: Signup },
+  Home: { screen: Login },
   Login: { screen: Login },
   Select: { screen: App },
   Review: { screen: ReviewPage },

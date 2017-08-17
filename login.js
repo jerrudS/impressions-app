@@ -6,8 +6,9 @@ export default class Login extends React.Component {
     super(props)
     this.state =
     {
-      username: [],
-      password: []
+      username: '',
+      password: '',
+      verify: []
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -23,12 +24,31 @@ export default class Login extends React.Component {
       username: this.state.username,
       password: this.state.password
     }
-    const res = await fetch('http://localhost:3040/login', {
+    const res = await fetch('https://impressions-app.herokuapp.com/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(userData)
     })
-    return this.setState({ text: res })
+    const status = res.status
+    const data = await res.json()
+    this.setState({ verify: data })
+    if (status === 200) {
+      const { navigate } = this.props.navigation
+      const data = this.state
+      return navigate('Select', { data })
+    }
+    else if (status === 400) {
+      alert('User Name and Password required')
+    }
+    else if (status === 404) {
+      alert('User Name does not exist')
+    }
+    else if (status === 401) {
+      alert('Password did not match')
+    }
+    else {
+      alert('Try Again')
+    }
   }
 
   render() {

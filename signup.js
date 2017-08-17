@@ -29,7 +29,7 @@ export default class Signup extends React.Component {
       password: this.state.password,
       email: this.state.email
     }
-    const res = await fetch('http://localhost:3040/users', {
+    const res = await fetch('https://impressions-app.herokuapp.com/users', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(userData)
