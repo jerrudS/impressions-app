@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardItem, Content, Text, Button } from 'native-base'
+import { Card, CardItem, Content, Text, Button, Image } from 'native-base'
 
 export default class Home extends React.Component {
   constructor(props) {
