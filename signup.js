@@ -11,6 +11,7 @@ export default class Signup extends React.Component {
       username: '',
       password: '',
       email: '',
+      scrollY: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -59,7 +60,7 @@ export default class Signup extends React.Component {
 
   render() {
     return (
-      <Content>
+      <Content enableResetScrollToCoords={false}>
         <Card>
           <CardItem style={{justifyContent: 'center'}}>
             <Text>Sign Up</Text>
