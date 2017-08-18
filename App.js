@@ -1,8 +1,6 @@
 import React from 'react'
-import { StyleProvider, View, Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base'
+import { Content } from 'native-base'
 import UserList from './userList.js'
-import getTheme from './native-base-theme/components'
-import commonColors from './native-base-theme/variables/commonColor'
 import { StackNavigator } from 'react-navigation'
 import ReviewPage from './reviewPage.js'
 import Submitted from './submitted.js'
@@ -41,13 +39,9 @@ class App extends React.Component {
   render() {
     const { navigate } = this.props.navigation
     return (
-      <StyleProvider style={getTheme(commonColors)}>
-        <Container>
-          <Content>
-            <UserList navigate= { navigate } token= { this.state.token } users={ this.state.users }/>
-          </Content>
-        </Container>
-      </StyleProvider>
+      <Content>
+        <UserList navigate= { navigate } token= { this.state.token } users={ this.state.users }/>
+      </Content>
     )
   }
 }

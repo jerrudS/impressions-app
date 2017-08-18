@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardItem, Content, Text, Button, Image } from 'native-base'
+import { Container, Card, CardItem, Content, Text, Button, Image } from 'native-base'
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -24,22 +24,24 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <Content>
-        <Card>
-          <CardItem style={{justifyContent: 'center'}}>
-            <Text style={{fontSize: 32, fontFamily: 'Hoefler Text'}}>Impressions</Text>
-          </CardItem>
-          <CardItem style={{justifyContent: 'center'}}>
-            <Text style={{fontSize: 18, fontFamily: 'Hoefler Text'}}>Let the reviewing begin...</Text>
-          </CardItem>
-          <CardItem style={{justifyContent: 'center'}}>
-            <Button onPress={ this.handleCreate } primary><Text>Create Account</Text></Button>
-          </CardItem>
-          <CardItem style={{justifyContent: 'center'}}>
-            <Button onPress={ this.handleLogin } primary><Text>Login</Text></Button>
-          </CardItem>
-        </Card>
-      </Content>
+      <Container style={{paddingTop: 120}}>
+        <Content>
+          <Card style={{paddingVertical: 50}}>
+            <CardItem style={{justifyContent: 'center'}}>
+              <Text style={{fontSize: 32, fontFamily: 'Hoefler Text'}}>Impressions</Text>
+            </CardItem>
+            <CardItem style={{justifyContent: 'center'}}>
+              <Text style={{fontSize: 18, fontFamily: 'Hoefler Text'}}>Let the reviewing begin...</Text>
+            </CardItem>
+            <CardItem style={{justifyContent: 'center'}}>
+              <Button onPress={ this.handleCreate } primary><Text>Create Account</Text></Button>
+            </CardItem>
+            <CardItem style={{justifyContent: 'center'}}>
+              <Button onPress={ this.handleLogin } primary><Text>Login</Text></Button>
+            </CardItem>
+          </Card>
+        </Content>
+      </Container>
     )
   }
 }
