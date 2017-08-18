@@ -8,6 +8,7 @@ import ReviewPage from './reviewPage.js'
 import Submitted from './submitted.js'
 import Signup from './signup.js'
 import Login from './login.js'
+import Home from './home.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -52,7 +53,8 @@ class App extends React.Component {
 }
 
 const ImpressionsApp = StackNavigator({
-  Home: { screen: Login },
+  Home: { screen: Home },
+  Signup: { screen: Signup },
   Login: { screen: Login },
   Select: { screen: App },
   Review: { screen: ReviewPage },
