@@ -7,9 +7,8 @@ export default class ReviewPage extends React.Component {
     super(props)
     this.state =
     {
-      text: '',
-      rating: [],
-      reviews: []
+      rating: '',
+      review: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -22,21 +21,23 @@ export default class ReviewPage extends React.Component {
   async handleSubmit(event) {
     event.preventDefault()
     const userData = this.props.navigation.state.params.user
+    const token = this.props.navigation.state.params.token
     const inputData =
     {
-      review: this.state.text,
+      review: this.state.review,
       rating: this.state.rating,
-      userId: userData.id
+      userid: userData.id
     }
     const res = await fetch('https://impressions-app.herokuapp.com/reviews', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer' + ' ' + token
+       },
       body: JSON.stringify(inputData)
     })
-    this.setState({ text: res })
     const { navigate } = this.props.navigation
-    const data = this.state
-    return navigate('Submitted', { data })
+    return navigate('Submitted')
   }
 
   render() {
@@ -74,7 +75,7 @@ export default class ReviewPage extends React.Component {
               </CardItem>
               <CardItem>
                 <Item regular>
-                  <Input onChangeText={(text) => this.setState({text})} placeholder='Add a review here'></Input>
+                  <Input onChangeText={(review) => this.setState({review})} placeholder='Add a review here'></Input>
                 </Item>
               </CardItem>
               <CardItem style={{justifyContent: 'center'}}>

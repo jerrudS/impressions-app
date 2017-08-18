@@ -28,9 +28,15 @@ export default class UserList extends React.Component {
 
   async handlePress(each) {
     const user = each
-    const res = await fetch('https://impressions-app.herokuapp.com/reviews' + '?' + 'id=' + user.id)
+    const token = this.props.token
+    const res = await fetch('https://impressions-app.herokuapp.com/reviews' + '?' + 'id=' + user.id, {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer' + ' ' + token
+      }
+    })
     const reviews = await res.json()
-    return this.props.navigate('Review', { user, reviews })
+    return this.props.navigate('Review', { user, reviews, token })
   }
 
   render() {

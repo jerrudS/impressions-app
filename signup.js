@@ -6,11 +6,11 @@ export default class Signup extends React.Component {
     super(props)
     this.state =
     {
-      firstname: [],
-      lastname: [],
-      username: [],
-      password: [],
-      email: [],
+      firstname: '',
+      lastname: '',
+      username: '',
+      password: '',
+      email: '',
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -29,12 +29,32 @@ export default class Signup extends React.Component {
       password: this.state.password,
       email: this.state.email
     }
-    const res = await fetch('http://localhost:3040/users', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(userData)
-    })
-    return this.setState({ text: res })
+    const { navigate } = this.props.navigation
+    const data = this.state
+    if (!data.firstname) {
+      alert('First Name Required')
+    }
+    else if (!data.lastname) {
+      alert('Last Name Required')
+    }
+    else if (!data.username) {
+      alert('User Name Required')
+    }
+    else if (!data.password) {
+      alert('Password required')
+    }
+    else if (!data.email) {
+      alert('Email Required')
+    }
+    else {
+      const res = await fetch('https://impressions-app.herokuapp.com/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userData)
+      })
+      this.setState({ text: res })
+      return navigate('Login', { data })
+    }
   }
 
   render() {
