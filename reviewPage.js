@@ -28,16 +28,25 @@ export default class ReviewPage extends React.Component {
       rating: this.state.rating,
       userid: userData.id
     }
-    const res = await fetch('https://impressions-app.herokuapp.com/reviews', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer' + ' ' + token
-       },
-      body: JSON.stringify(inputData)
-    })
-    const { navigate } = this.props.navigation
-    return navigate('Submitted')
+    const data = this.state
+    if (!data.review) {
+      alert('Review required')
+    }
+    else if (!data.rating) {
+      alert('Rating required')
+    }
+    else {
+      const res = await fetch('https://impressions-app.herokuapp.com/reviews', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer' + ' ' + token
+         },
+        body: JSON.stringify(inputData)
+      })
+      const { navigate } = this.props.navigation
+      return navigate('Submitted')
+    }
   }
 
   render() {
