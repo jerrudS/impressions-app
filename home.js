@@ -24,7 +24,7 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <Container style={{paddingTop: 120}}>
+      <Container style={{paddingTop: 100}}>
         <Content>
           <Card style={{paddingVertical: 50}}>
             <CardItem style={{justifyContent: 'center'}}>
