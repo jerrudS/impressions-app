@@ -5,7 +5,6 @@ A React Native iOS app for the socially conscious to rate and review others.
 
 ![impressions-login](https://user-images.githubusercontent.com/24904243/29437525-e194f5e4-8365-11e7-8979-ebd2f6dd87dc.gif)
 
-(Auto scroll is a bug in native base code)
 ![impressions-signup](https://user-images.githubusercontent.com/24904243/29340571-90388be4-81d4-11e7-8cf4-f54fa5d8e5ac.gif)
 
 ![impressions-review-page](https://user-images.githubusercontent.com/24904243/29293864-8d71ac0c-8101-11e7-951c-50059c6f0fd6.gif)
